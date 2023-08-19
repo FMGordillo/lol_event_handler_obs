@@ -1,0 +1,11 @@
+html
+  head
+    title Lolcito plugin
+    script(src="https://unpkg.com/htmx.org@1.9.4"
+    integrity="sha384-zUfuhFKKZCbHTY6aRR46gxiqszMk5tcHjsVFxnUo8VMus4kHGVdIYVbOYYNlKmHV"
+    crossorigin="anonymous")
+    script(src="https://cdn.tailwindcss.com")
+
+  body
+    section(hx-get="/lol_events" hx-trigger="every 500ms")
+
