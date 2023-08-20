@@ -58,8 +58,7 @@ async function* getLolData() {
           yield {
             id: new Date().toISOString(),
             event: key,
-            data: `<h1>${key}</h1>`,
-            data: `<video id="${key}-video" onended="removeVideo('${key}')" autoplay><source src="/public/videos/kills.mp4" type="video/mp4"></video>`,
+            data: `<video id="${key}-video" class="transition-all" onended="removeVideo('${key}')" autoplay><source src="/public/videos/${key}.mp4" type="video/mp4"></video>`,
           };
         }
       }
@@ -68,7 +67,7 @@ async function* getLolData() {
     } catch (error) {
       console.log({ error });
     } finally {
-      await sleep(1000);
+      await sleep(5000);
     }
   }
 }
