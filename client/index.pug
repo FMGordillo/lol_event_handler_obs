@@ -6,6 +6,9 @@ html
     crossorigin="anonymous")
     script(src="https://cdn.tailwindcss.com")
 
-  body
-    section(hx-get="/lol_events" hx-trigger="every 500ms")
+  body(hx-sse="connect:/lol_events")
+    section#image-kills(hx-sse="swap:kills")
+    section#image-assist(hx-sse="swap:assists")
+    section#image-death(hx-sse="swap:deaths")
+
     script(src="/public/app.js")
