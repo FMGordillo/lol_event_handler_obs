@@ -6,9 +6,7 @@ html
     crossorigin="anonymous")
     script(src="https://cdn.tailwindcss.com")
 
-  body(hx-sse="connect:/lol_events")
-    section#image-kills(hx-sse="swap:kills")
-    section#image-assist(hx-sse="swap:assists")
-    section#image-death(hx-sse="swap:deaths")
+  body(class="bg-green-500" hx-sse="connect:/lol_events")
+    section#video(hx-sse="swap:video")
 
     script(src="/public/app.js")

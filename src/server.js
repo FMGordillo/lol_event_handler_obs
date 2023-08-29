@@ -20,6 +20,8 @@ process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
 
 const __filename = fileURLToPath(import.meta.url);
 
+console.log("haber", path.join(__filename, "..", "..", "certs", "key.pem"));
+
 const server = Fastify({
   logger: true,
 });
@@ -57,8 +59,9 @@ async function* getLolData() {
         if (value > data[key]) {
           yield {
             id: new Date().toISOString(),
-            event: key,
-            data: `<video id="${key}-video" class="transition-all" onended="removeVideo('${key}')" autoplay><source src="/public/videos/${key}.mp4" type="video/mp4"></video>`,
+            // TODO: No estoy seguro
+            event: "video",
+            data: `<video id="video_raw" class="transition-all" oncanplay="showVideo()" onended="removeVideo()" autoplay><source src="/public/videos/${key}.mp4" type="video/mp4"></video>`,
           };
         }
       }
@@ -67,7 +70,7 @@ async function* getLolData() {
     } catch (error) {
       console.log({ error });
     } finally {
-      await sleep(5000);
+      await sleep(500);
     }
   }
 }
